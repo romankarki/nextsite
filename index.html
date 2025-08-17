@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr X - AI Engineer</title>
+    <meta name="description" content="Portfolio website for Mr X, an AI Engineer specializing in TensorFlow and related technologies.">
+    <meta name="keywords" content="AI Engineer, Artificial Intelligence, Machine Learning, Deep Learning, TensorFlow, Python, Data Science, Portfolio, Mr X">
+    <meta name="author" content="Mr X">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --heading-color: #343a40;
+            --card-background: #ffffff;
+            --footer-background: #343a40;
+            --footer-text-color: #f8f9fa;
+            --hover-color: #0056b3;
+
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-secondary: 'Roboto', sans-serif;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-secondary);
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--hover-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-background);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--heading-color);
+            font-family: var(--font-secondary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+        }
+
+        /* Hero Section */
+        #hero {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--card-background);
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--card-background);
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #218838;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--card-background);
+        }
+
+        /* About Section */
+        #about .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #about .content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #about .image-container {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        #about img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #about img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Skills Section */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--heading-color);
+        }
+
+        /* Projects Section */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* For image clipping */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Ensures image covers the area */
+        }
+
+        .project-card .content {
+            padding: 1.5rem;
+            flex-grow: 1; /* Allows content to take up available space */
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--heading-color);
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-card .tags {
+            margin-bottom: 1rem;
+        }
+
+        .project-card .tags span {
+            display: inline-block;
+            background-color: rgba(0, 123, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .project-card .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto; /* Pushes buttons to the bottom */
+        }
+
+        .project-card .buttons a {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-card .buttons .demo-btn {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+        }
+
+        .project-card .buttons .demo-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        .project-card .buttons .repo-btn {
+            background-color: var(--secondary-color);
+            color: var(--card-background);
+        }
+
+        .project-card .buttons .repo-btn:hover {
+            background-color: #5a6268;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: var(--card-background);
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: var(--accent-color);
+            color: var(--card-background);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-background);
+            color: var(--footer-text-color);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links a {
+            color: var(--footer-text-color);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations and Transitions */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+
+            header .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            #hero h1 {
+                font-size: 3rem;
+            }
+
+            #hero p {
+                font-size: 1.2rem;
+            }
+
+            #about .container,
+            #skills .skills-grid,
+            #projects .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #about .container {
+                flex-direction: column;
+            }
+
+            .project-card .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .project-card .buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Accessibility */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Add Font Awesome for Icons */
+        /* You would typically link this in the <head> */
+        /* For this example, we'll use placeholder inline icons if Font Awesome isn't available. */
+        /* If you want real icons, uncomment the line below and link to Font Awesome CDN */
+        /* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> */
+        .skill-card .icon-placeholder {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: inline-block;
+            width: 3rem; /* Ensures consistent spacing */
+            height: 3rem;
+            line-height: 3rem;
+            text-align: center;
+            border-radius: 5px;
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+    </style>
+    <!-- Link to Google Fonts (Optional but recommended for modern typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (Recommended) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Mr X</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Hello, I'm Mr X</h1>
+                <p>An AI Engineer passionate about building intelligent systems with TensorFlow.</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="content animate-on-scroll">
+                    <h2>About Me</h2>
+                    <p>I am a dedicated AI Engineer with a strong foundation in machine learning and deep learning principles. My expertise lies in developing and deploying scalable AI solutions, with a particular focus on leveraging the power of TensorFlow.</p>
+                    <p>From conceptualization to implementation, I thrive on tackling complex problems and transforming data into actionable insights. I am constantly exploring new advancements in AI to push the boundaries of what's possible.</p>
+                    <p>Whether it's building predictive models, designing neural networks, or optimizing algorithms, I am committed to delivering high-quality, innovative solutions.</p>
+                </div>
+                <div class="image-container animate-on-scroll" style="animation-delay: 0.2s;">
+                    <!-- Placeholder for an image -->
+                    <div class="icon-placeholder" style="font-size: 5rem; background-color: rgba(0, 123, 255, 0.2); color: var(--primary-color);"><i class="fas fa-robot"></i></div>
+                    <!-- <img src="placeholder-image.jpg" alt="Mr X - AI Engineer"> -->
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card animate-on-scroll">
+                        <div class="icon-placeholder"><i class="fab fa-python"></i></div>
+                        <h3>Python</h3>
+                        <p>Proficient in Python for AI development.</p>
+                    </div>
+                    <div class="skill-card animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="icon-placeholder"><i class="fas fa-brain"></i></div>
+                        <h3>TensorFlow</h3>
+                        <p>Extensive experience with TensorFlow and Keras.</p>
+                    </div>
+                    <div class="skill-card animate-on-scroll" style="animation-delay: 0.4s;">
+                        <div class="icon-placeholder"><i class="fas fa-chart-line"></i></div>
+                        <h3>Machine Learning</h3>
+                        <p>Strong understanding of ML algorithms and concepts.</p>
+                    </div>
+                    <div class="skill-card animate-on-scroll" style="animation-delay: 0.6s;">
+                        <div class="icon-placeholder"><i class="fas fa-layer-group"></i></div>
+                        <h3>Deep Learning</h3>
+                        <p>Expertise in neural networks and deep learning architectures.</p>
+                    </div>
+                    <div class="skill-card animate-on-scroll" style="animation-delay: 0.8s;">
+                        <div class="icon-placeholder"><i class="fas fa-database"></i></div>
+                        <h3>Data Science</h3>
+                        <p>Skilled in data analysis, preprocessing, and visualization.</p>
+                    </div>
+                    <div class="skill-card animate-on-scroll" style="animation-delay: 1s;">
+                        <div class="icon-placeholder"><i class="fas fa-cogs"></i></div>
+                        <h3>Model Deployment</h3>
+                        <p>Experience deploying models to various environments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card animate-on-scroll">
+                        <img src="https://via.placeholder.com/300x200/007bff/ffffff?text=Project+1" alt="Project 1">
+                        <div class="content">
+                            <h3>Image Recognition System</h3>
+                            <p>Developed a deep learning model for accurate image classification using TensorFlow.</p>
+                            <div class="tags">
+                                <span>TensorFlow</span>
+                                <span>CNN</span>
+                                <span>Python</span>
+                                <span>Computer Vision</span>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="demo-btn">Demo</a>
+                            <a href="#" class="repo-btn">Repository</a>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll" style="animation-delay: 0.2s;">
+                        <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Project+2" alt="Project 2">
+                        <div class="content">
+                            <h3>Natural Language Processing</h3>
+                            <p>Built an NLP model for sentiment analysis and text generation.</p>
+                            <div class="tags">
+                                <span>TensorFlow</span>
+                                <span>NLP</span>
+                                <span>RNN</span>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="demo-btn">Demo</a>
+                            <a href="#" class="repo-btn">Repository</a>
+                        </div>
+                    </div>
+                    <div class="project-card animate-on-scroll" style="animation-delay: 0.4s;">
+                        <img src="https://via.placeholder.com/300x200/ffc107/ffffff?text=Project+3" alt="Project 3">
+                        <div class="content">
+                            <h3>Predictive Analytics Dashboard</h3>
+                            <p>Created a dashboard visualizing predictions from a time-series forecasting model.</p>
+                            <div class="tags">
+                                <span>Python</span>
+                                <span>Data Visualization</span>
+                                <span>Forecasting</span>
+                                <span>ML</span>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <a href="#" class="demo-btn">Demo</a>
+                            <a href="#" class="repo-btn">Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-content">
+                    <p>Have a project in mind or want to discuss AI? Feel free to reach out!</p>
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Mr X. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
